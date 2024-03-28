@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="p-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <form (ngSubmit)="updateFormation()" [formGroup]="formationForm">
+              <div class="mb-3">
+                <label class="form-label">Titre</label>
+                <input class="form-control" value="{{formation?.titre}}" formControlName="titre">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Description</label>
+                <input class="form-control" value="{{formation?.description}}" formControlName="description">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Date Start</label>
+                <input type="date" class="form-control" formControlName="dateDebut" [value]="formation?.dateDebut | date: 'yyyy-MM-dd'">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Date Fin</label>
+                <input type="date" class="form-control" formControlName="dateFin" [value]="formation?.dateFin | date: 'yyyy-MM-dd'">
+              </div>
+              <button class="btn btn-success" [disabled]="formationForm.invalid">update</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

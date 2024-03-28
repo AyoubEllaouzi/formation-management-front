@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="p-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-body">
+          <input type="text" placeholder="find product" [(ngModel)]="keyword">
+          <button class="btn btn-outline-success" (click)="findProduct()">
+            <i class="bi bi-search"></i>
+            Search
+          </button>
+        </div>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>titre</th>
+            <th>description</th>
+            <th>dateDebut</th>
+            <th>dateFin</th>
+            <th>update</th>
+            <th>delete</th>
+          </tr>
+          </thead>
+          <tbody>
+          <!-- *ngFor="let product of products "-->
+          <tr *ngFor="let formation of formations">
+            <td>{{formation.titre}}</td>
+            <td>{{formation.description}}</td>
+            <td>{{ formation.dateDebut | date: 'yyyy-MM-dd' }}</td>
+            <td>{{ formation.dateFin | date: 'yyyy-MM-dd' }}</td>
+            <td>
+              <!--(click)="handleUpdate(product)"-->
+              <button [routerLink]="['update-formation', formation.id]" class="btn btn-outline-success">
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+            </td>
+            <td>
+              <!--(click)="handleDelete(product)"-->
+              <button (click)="deleteFormation(formation)" class="btn btn-outline-danger">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
