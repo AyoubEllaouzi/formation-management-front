@@ -5,6 +5,7 @@ import {Formation} from "../../model/formation.model";
 import {DatePipe, NgForOf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {HttpResponse} from "@angular/common/http";
+import {Observable, throwError} from "rxjs";
 
 @Component({
   selector: 'app-formations',
@@ -24,9 +25,9 @@ export class FormationsComponent implements OnInit{
   constructor(private formationService: FormationService) {
   }
   ngOnInit(): void {
-    this.getProducts();
+    this.getFormations();
   }
-  getProducts(){
+  getFormations(){
     this.formationService.getAllFormation()
       .subscribe({
         next: (resp)=> {
@@ -41,7 +42,6 @@ export class FormationsComponent implements OnInit{
     this.formationService.deleteFormation(formation.id).subscribe({
       next: value => {
         this.formations = this.formations.filter(f=>f.id!==formation.id);
-        console.log(this.formations.filter(f=>f.id!==formation.id));
     },
       error: err => {
         console.log("error");
@@ -51,16 +51,13 @@ export class FormationsComponent implements OnInit{
 findProduct() {
   this.formationService.findFormation(this.keyword).subscribe({
     next: (response: HttpResponse<any>) => {
-      console.log('Response from backend:', response);
-      if (response.status === 200) {
         const responseData = response.body;
         this.formations = responseData.filter((formation: { titre: string | string[]; }) => formation.titre.includes(this.keyword));
-      } else {
-        console.error('Error occurred: Unexpected response status');
-      }
+        return true;
     },
     error: err => {
-      console.error('Error occurred:', err);
+      console.error('error:', err);
+      return throwError(err);
     }
   });
 }

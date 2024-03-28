@@ -30,7 +30,7 @@ export class NewFormationComponent implements OnInit{
     console.log(formation.dateFin)
     this.formationService.saveFormation(formation).subscribe({
       next: data=>{
-        alert(JSON.stringify(data));
+        alert("formation saved successfully");
       }, error: err => {
         console.log("error");
       }
