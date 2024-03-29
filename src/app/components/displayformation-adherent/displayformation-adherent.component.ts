@@ -24,14 +24,11 @@ export class DisplayformationAdherentComponent implements OnInit{
               private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log(params); // Log the entire params object
+      console.log(params);
       this.id = +params['id'];
-      console.log("ID:", this.id);
       this.getAdherentsInFormation();
     });
   }
-
-
 
   getAdherentsInFormation(){
     console.log(")---------",this.id);

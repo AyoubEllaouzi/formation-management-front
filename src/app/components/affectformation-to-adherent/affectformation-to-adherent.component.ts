@@ -28,9 +28,7 @@ export class AffectformationToAdherentComponent implements OnInit{
       myFormationId: [null, Validators.required],
 
     })
-
   }
-
   ngOnInit(): void {
     this.getFormations();
     this.route.params.subscribe(params => {
@@ -49,17 +47,8 @@ export class AffectformationToAdherentComponent implements OnInit{
       });
   }
 
-
-
   affectFormation() {
-    // Extract adherent data from the form
     const adherent: Adherent = this.adherentForm.value;
-
-    // Log relevant data for debugging
-    console.log("ID:", this.id);
-    console.log("Adherent Formation ID:", adherent.myFormationId);
-
-    // Call adherentService to affect formation
     this.adherentService.affectFormation(this.id, adherent.myFormationId)
       .subscribe({
         next: (resp) => {
@@ -70,8 +59,4 @@ export class AffectformationToAdherentComponent implements OnInit{
         }
       });
   }
-
-
-
-
 }
