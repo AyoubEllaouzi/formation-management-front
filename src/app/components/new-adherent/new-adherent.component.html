@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="p-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <!--  -->
+            <form (ngSubmit)="saveAdherent()" [formGroup]="adherentForm">
+              <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <input class="form-control" formControlName="firstName">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <input class="form-control" formControlName="lastName">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input class="form-control" formControlName="email">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input class="form-control" formControlName="phone">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Address</label>
+                <input class="form-control" formControlName="address">
+              </div>
+
+
+              <button class="btn btn-success"  >save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

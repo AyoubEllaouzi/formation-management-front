@@ -48,7 +48,7 @@ export class FormationsComponent implements OnInit{
       }
     })
   }
-findProduct() {
+findFormation() {
   this.formationService.findFormation(this.keyword).subscribe({
     next: (response: HttpResponse<any>) => {
         const responseData = response.body;

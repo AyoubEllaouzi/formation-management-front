@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormationService} from "../../services/formation.service";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Formation} from "../../model/formation.model";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DatePipe, NgIf} from "@angular/common";
 import { HttpResponse } from '@angular/common/http';
 
@@ -27,7 +27,8 @@ export class UpdateFormationComponent implements OnInit{
   constructor(private route: ActivatedRoute,
               private formBuilder:FormBuilder,
               private datePipe: DatePipe,
-              private formationService:FormationService) {
+              private formationService:FormationService,
+              private router: Router) {
 
     this.route.params.subscribe(params => {
       this.id = params['id'];
@@ -38,7 +39,7 @@ export class UpdateFormationComponent implements OnInit{
           next: (response: HttpResponse<any>) => {
               if (response && response.body) {
                   this.formation = response.body;
-                  console.log("Formation data:", this.formation); // Add this line for debugging
+                  console.log("Formation data:", this.formation);
                   this.initForm();
               } else {
                   console.log("Formation not found or response body is null.");
@@ -65,6 +66,7 @@ export class UpdateFormationComponent implements OnInit{
 
       next: data=>{
         alert("Formation Updated Successfully");
+        this.router.navigate(['']);
       }, error: err => {
         console.log("error");
       }

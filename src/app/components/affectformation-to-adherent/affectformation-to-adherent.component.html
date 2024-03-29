@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="p-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <form (ngSubmit)="affectFormation()" [formGroup]="adherentForm">
+              <select class="form-select" aria-label="Default select example" formControlName="myFormationId">
+                <option selected disabled>Select Formation</option>
+                <option *ngFor="let formation of formations" [value]="formation.id">{{ formation.titre }}</option>
+              </select>
+              <button class="btn btn-success"  [disabled]="adherentForm.invalid">save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

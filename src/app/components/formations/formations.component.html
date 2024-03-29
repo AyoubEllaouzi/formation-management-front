@@ -2,16 +2,16 @@
   <div class="p-3">
     <div class="card">
       <div class="card-body">
-        <div class="button-container">
-          <button type="button" class="btn btn-success">Success</button>
+
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-info" routerLink="add-formation">Add Formation</button>
         </div>
-        <div class="card-body">
-          <input type="text" placeholder="find product" [(ngModel)]="keyword">
-          <button class="btn btn-outline-success" (click)="findProduct()">
-            <i class="bi bi-search"></i>
-            Search
-          </button>
+
+        <div class="input-group" style="max-width: 400px;">
+          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" [(ngModel)]="keyword"/>
+          <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init (click)="findFormation()"><i class="bi bi-search"></i> search</button>
         </div>
+
         <table class="table">
           <thead>
           <tr>
@@ -19,6 +19,7 @@
             <th>description</th>
             <th>dateDebut</th>
             <th>dateFin</th>
+            <th>adherents</th>
             <th>update</th>
             <th>delete</th>
           </tr>
@@ -29,6 +30,12 @@
             <td>{{formation.description}}</td>
             <td>{{ formation.dateDebut | date: 'yyyy-MM-dd T HH:mm' }}</td>
             <td>{{ formation.dateFin | date: 'yyyy-MM-dd T HH:mm' }}</td>
+            <td>
+              <button [routerLink]="['formationAdherents', formation.id]" class="btn btn-outline-success">
+                <i class="bi bi-lamp-fill"></i>
+              </button>
+            </td>
+
             <td>
               <button [routerLink]="['update-formation', formation.id]" class="btn btn-outline-success">
                 <i class="bi bi-pencil-fill"></i>

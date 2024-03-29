@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="p-3">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-info" routerLink="/add-adherent">Add Adherent</button>
+        </div>
+        {{keyword}}
+        <div class="input-group" style="max-width: 400px;">
+          <input type="search" class="form-control rounded" placeholder="Search by last name" aria-label="Search" aria-describedby="search-addon" [(ngModel)]="keyword"/>
+          <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init (click)="findAdherent()"><i class="bi bi-search"></i> search</button>
+        </div>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>first name</th>
+            <th>last name</th>
+            <th>email</th>
+            <th>phone</th>
+            <th>address</th>
+            <th>add formation</th>
+            <th>update</th>
+            <th>delete</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let adherent of adherents">
+            <td>{{adherent.firstName}}</td>
+            <td>{{adherent.lastName}}</td>
+            <td>{{adherent.email}}</td>
+            <td>{{adherent.phone}}</td>
+            <td>{{adherent.address}}</td>
+            <td>
+              <!--  [routerLink]="['update-formation', formation.id]"  -->
+              <button class="btn btn-outline-success" [routerLink]="['/add-formation', adherent.id]" >
+                <i class="bi bi-lamp-fill"></i>
+              </button>
+            </td>
+
+            <td>
+              <!--  [routerLink]="['update-formation', formation.id]"  -->
+              <button class="btn btn-outline-success" [routerLink]="['/update-adherent', adherent.id]" >
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+            </td>
+            <td>
+              <!--  -->
+              <button class="btn btn-outline-danger">
+                <i class="bi bi-trash" (click)="deleteAdherent(adherent)"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

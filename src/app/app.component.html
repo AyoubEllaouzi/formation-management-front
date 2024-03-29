@@ -1,17 +1,25 @@
-<div class="container">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/">Norsys Formation</a>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/">Home</a>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <img
+          src="assets/images/logo_norsys.jpg"
+          height="45"
+          alt="MDB Logo"
+          loading="lazy"
+        />
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Formations</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="add-formation">Add formation</a>
+          <a class="nav-link" routerLink="adherents">Adherents</a>
         </li>
       </ul>
     </div>
-  </nav>
-</div>
+  </div>
+</nav>
 <router-outlet></router-outlet>

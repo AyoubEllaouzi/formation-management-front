@@ -17,17 +17,12 @@
                 <label class="form-label">Date Start: </label>
                 <input type="datetime-local" class="form-control" [value]="formatDate(formation.dateDebut)" formControlName="dateDebut">
               </div>
-
               <div class="mb-3">
                 <label class="form-label">Date End: </label>
                 <input type="datetime-local" class="form-control" [value]="formatDate(formation.dateFin)" formControlName="dateFin">
               </div>
-
-
-
               <button class="btn btn-success" [disabled]="formationForm.invalid">update</button>
             </form>
-
           </div>
         </div>
       </div>

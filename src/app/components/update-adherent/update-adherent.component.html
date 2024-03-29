@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="p-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <!--   -->
+            <form *ngIf="adherent && adherentForm" (ngSubmit)="updateAdherent()" [formGroup]="adherentForm">
+              <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <input class="form-control" formControlName="firstName" value="{{adherent.firstName}}">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <input class="form-control" formControlName="lastName" value="{{adherent.lastName}}">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input class="form-control" formControlName="phone" value="{{adherent.phone}}">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input class="form-control" formControlName="email" value="{{adherent.email}}">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Address</label>
+                <input class="form-control" formControlName="address" value="{{adherent.address}}">
+              </div>
+              <button class="btn btn-success" [disabled]="adherentForm.invalid">update</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
